@@ -7,6 +7,7 @@ Finance: 10.0.0.9/ 29,               0.10, .11, .12, .13, .14, .15,
 Registration: 10.0.0.17/ 30,        .18, .19 
 
 Setting VLAN Names:                                     IT   ->    Vlan 10          ->     Finance ->   Vlan 20   ->   Registration   ->   Vlan 30
+
 Switch>
 Switch>enable
 Switch#config t
@@ -20,4 +21,23 @@ Switch(config-vlan)#exit
 Switch(config)#vlan 30 
 Switch(config-vlan)#name REGISTRATION
 Switch(config-vlan)#exit
-Switch(config)#
+
+Commands to give access to each port to the VLANS:
+
+interface fa0/1
+switchport mode access
+switchport access vlan 30
+exit
+
+interface fa0/2
+switchport mode access 
+switchport access vlan 30
+exit
+
+Note: Do this for all the 10 ports fa0/1 to fa0/10 to their respective VLANs. Figure below shows the assignments is successful
+
+Note: Incase of wrong vlan assignment, go to the interface, enter no swithcport mode access
+example: interface fa0/1    -> no switchport mode access
+<img width="783" height="496" alt="image" src="https://github.com/user-attachments/assets/f7030dfe-0172-4ebc-aae0-3573ac32b17a" />
+
+
